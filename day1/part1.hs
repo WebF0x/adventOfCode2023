@@ -13,9 +13,6 @@ main = do
   let answer = sum calibrationValues
   print answer
 
-getFileLines :: String -> String
-getFileLines str = [c | c <- str, c `elem` ['0' .. '9']]
-
 digits :: String -> String
 digits line = [c | c <- line, c `elem` ['0' .. '9']]
 
