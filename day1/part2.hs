@@ -5,7 +5,7 @@ import Data.Maybe
 import System.IO
 
 filename :: String
-filename = "day1/input.txt"
+filename = "input.txt"
 
 digitStrings =
   [ "1",

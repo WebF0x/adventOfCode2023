@@ -3,7 +3,7 @@ import Data.List.Split
 import System.IO
 
 filename :: String
-filename = "day1/input.txt"
+filename = "input.txt"
 
 main :: IO ()
 main = do
