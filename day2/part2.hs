@@ -1,7 +1,9 @@
 import Control.Monad
-import Data.List.Split
+import Data.List (find)
+import Data.List.Split (splitOn)
+import Data.Maybe
 import GHC.Data.Bag (headMaybe)
-import System.IO
+import System.IO ()
 
 data Game = Game
   { gameId :: Integer,
@@ -69,5 +71,10 @@ maxColorDraw rounds c = maximum (map (`colorCount` c) rounds)
 
 colorCount :: Round -> Color -> Integer
 colorCount round myColor = do
-  let maybeColorAndCounts = filter (\colorAndCount -> color colorAndCount == myColor) (cubesByColor round)
-  if null maybeColorAndCounts then 0 else count (head maybeColorAndCounts)
+  let maybeColorAndCount = getColorAndCount (cubesByColor round) myColor
+  maybe 0 count maybeColorAndCount
+
+getColorAndCount :: [ColorAndCount] -> Color -> Maybe ColorAndCount
+getColorAndCount colorCounts myColor = do
+  let isSameColor colorAndCount = color colorAndCount == myColor
+  find isSameColor colorCounts
